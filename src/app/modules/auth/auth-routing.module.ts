@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { AutoLoginGuard } from 'src/app/guards/auto-login.guard';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'login', component: LoginComponent, canActivate : [AutoLoginGuard]
   }
 ];
 
