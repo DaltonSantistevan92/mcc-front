@@ -57,7 +57,7 @@ export class LayoutService {
         this.overlayOpen.next(null);
       }
     }
-
+ 
     if (this.isDesktop()) {
       this.state.staticMenuDesktopInactive = !this.state.staticMenuDesktopInactive;
     }

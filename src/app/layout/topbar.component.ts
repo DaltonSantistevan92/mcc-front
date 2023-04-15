@@ -1,20 +1,25 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from './layout.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
 })
 export class TopbarComponent {
-
   items!: MenuItem[];
 
-    @ViewChild('menubutton') menuButton!: ElementRef;
+  @ViewChild('menubutton') menuButton!: ElementRef;
 
-    @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
+  @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
 
-    @ViewChild('topbarmenu') menu!: ElementRef;
+  @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) { }
+  constructor(public layoutService: LayoutService, private router: Router) {}
+
+  salir() {
+    localStorage.clear();
+    this.router.navigateByUrl('/auth/login');
+  }
 }

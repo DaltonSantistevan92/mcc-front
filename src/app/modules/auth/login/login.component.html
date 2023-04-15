@@ -11,6 +11,7 @@
                         <label for="email1" class="block text-900 text-xl font-medium mb-2">Email</label>
                         <input id="email1" type="text" formControlName="email" placeholder="Email address" pInputText class="w-full md:w-30rem"
                             style="padding:1rem" >  <!-- [ngClass]="{ 'is-invalid': fieldsValidate('email') }" -->
+                        <br>
                         <ng-container *ngIf="(email?.dirty || email?.touched)">
                             <small class="text-red-500"> {{emailError}} </small>
                         </ng-container>
