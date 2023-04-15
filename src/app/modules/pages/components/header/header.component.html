@@ -1,28 +1,50 @@
 <div class="grid p-fluid">
     <div class="col-12">
-        <div class="card card-w-title">
-            <h5><img alt="Logo" class="mr-2" src="assets/img/macaco.svg" height="40"></h5>
+        <div class="layout-topbar">
             <p-menubar [model]="tieredItems">
+                <ng-template pTemplate="start">
+                    <img alt="Logo" class="mr-2" src="assets/img/macaco.svg" height="40">
+                </ng-template>
+
                 <ng-template pTemplate="end">
-                    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
-                        <i class="pi pi-ellipsis-v"></i>
-                    </button>
-                
-                    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-                        <button class="p-link layout-topbar-button">
-                            <i class="pi pi-shopping-cart"></i>
-                            <span>Mi Carrito</span>
+                    <div>
+                        <button #topbarmenubutton class="p-link" (click)="layoutService.showProfileSidebar()">
+                            <i class="pi pi-ellipsis-v"></i>
                         </button>
-                        <button class="p-link layout-topbar-button">
-                            <i class="pi pi-user"></i>
-                            <span>Mi Perfil</span>
-                        </button>
-                        <button class="p-link layout-topbar-button">
-                            <i class="pi pi-sign-out"></i>
-                            <span>Salir</span>
-                        </button>
+
+                        <div #topbarmenu class="layout-topbar-menu"
+                            [ngClass]="{'layout-topbar-menu-mobile-active': false}">
+                            <button class="p-link layout-topbar-button">
+                                <i class="pi pi-shopping-cart"></i>
+                                <span>Mi Carrito</span>
+                            </button>
+                            <button class="p-link layout-topbar-button">
+                                <i class="pi pi-user"></i>
+                                <span>Mi Perfil</span>
+                            </button>
+                            <button class="p-link layout-topbar-button">
+                                <i class="pi pi-sign-out"></i>
+                                <span>Salir</span>
+                            </button>
+                        </div>
                     </div>
                 </ng-template>
+            </p-menubar>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="">
+    <div class="col-12">
+        <div class="card">
+            <p-menubar [model]="tieredItems">
+                <ng-template pTemplate="start">
+                    <img alt="Logo" class="mr-2" src="assets/img/macaco.svg" height="40">
+                </ng-template>
+
+                
             </p-menubar>
         </div>
     </div>

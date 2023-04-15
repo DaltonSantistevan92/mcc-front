@@ -19,44 +19,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.tieredItems = [
       {
-        label: 'Customers',
-        icon: 'pi pi-fw pi-table',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Customer',
-                icon: 'pi pi-fw pi-plus',
-              },
-              {
-                label: 'Duplicate',
-                icon: 'pi pi-fw pi-copy',
-              },
-            ],
-          },
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-user-edit',
-          },
-        ],
+        label: 'Tienda',
+        icon: 'pi pi-fw pi-home',
       },
       {
-        label: 'Orders',
-        icon: 'pi pi-fw pi-shopping-cart',
-        items: [
-          {
-            label: 'View',
-            icon: 'pi pi-fw pi-list',
-          },
-          {
-            label: 'Search',
-            icon: 'pi pi-fw pi-search',
-          },
-        ],
+        label: 'Galería',
+        icon: 'pi pi-fw pi-images',
       },
-      {
+      /* {
         label: 'Shipments',
         icon: 'pi pi-fw pi-envelope',
         items: [
@@ -73,26 +43,16 @@ export class HeaderComponent implements OnInit {
             icon: 'pi pi-fw pi-pencil',
           },
         ],
-      },
+      }, */
       {
-        label: 'Profile',
-        icon: 'pi pi-fw pi-user',
-        items: [
-          {
-            label: 'Settings',
-            icon: 'pi pi-fw pi-cog',
-          },
-          {
-            label: 'Billing',
-            icon: 'pi pi-fw pi-file',
-          },
-        ],
+        label: 'Nosotros',
+        icon: 'pi pi-fw pi-info-circle',
       },
-      { separator: true },
+      /* { separator: true },
       {
         label: 'Quit',
         icon: 'pi pi-fw pi-sign-out',
-      },
+      }, */
     ];
   }
 }
