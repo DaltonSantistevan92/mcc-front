@@ -3,7 +3,9 @@
         <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
             <div class="text-center mb-5">
                 <div class="text-900 text-3xl font-medium mb-3">Bienvenid@ a Macaco Store</div>
-                <span class="text-600 font-medium">Inicia Sesión Para continuar</span>
+                <!-- <span class="text-600 font-medium">Inicia Sesión Para continuar</span> -->
+                <span class="text-600 font-medium line-height-3">¿No tienes una cuenta?</span>
+        <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/auth/signup">¡Créala hoy!</a>
             </div>
             <form [formGroup]="formLogin" (ngSubmit)="login()">
                 <div>
@@ -20,7 +22,7 @@
     
                     <div class="mb-5">
                         <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                        <p-password id="password1" autocomplete="off" formControlName="password" placeholder="Password" [style]="{'width':'100%'}"
+                        <p-password id="password1" autocomplete="off" [feedback]="false" formControlName="password" placeholder="Password" [style]="{'width':'100%'}"
                             [inputStyle]="{'width':'100%'}" [toggleMask]="true"
                             inputStyleClass="w-full p-3 md:w-50rem"></p-password>
                         <ng-container *ngIf="(email?.dirty || email?.touched)">

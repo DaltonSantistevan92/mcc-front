@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { Customer, Representative } from '../interfaces/customer';
 import { Product } from '../interfaces/product';
 import { Table } from 'primeng/table';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 interface expandedRows {
   [key: string]: boolean;
@@ -82,6 +83,7 @@ export class CartComponent implements OnInit {
 
   @ViewChild('filter') filter!: ElementRef;
 
+
   constructor() { }
 
   ngOnInit() {
@@ -89,7 +91,8 @@ export class CartComponent implements OnInit {
       this.loading = false;
       // @ts-ignore
       this.customers1.forEach(customer => customer.date = new Date(customer.date));
-    }, 500);    
+    }, 500);  
+    
   }
 
   onSort() {

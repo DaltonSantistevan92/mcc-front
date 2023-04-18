@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   signIn(data: any):Observable<IntSession>{
-    const URL = `${this.webservice}/loginUser`;
+    const URL = `${this.webservice}/login`;
     return this.http.post<IntSession>( URL, data )
     .pipe(
       tap(( data ) => { 

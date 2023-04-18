@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AutoLoginGuard } from 'src/app/guards/auto-login.guard';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent, canActivate : [AutoLoginGuard]
+  },
+  {
+    path: 'signup', component: SignupComponent,
   }
 ];
 

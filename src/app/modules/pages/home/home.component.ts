@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from '../interfaces/product';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -10,87 +11,31 @@ import { Product } from '../interfaces/product';
 })
 export class HomeComponent implements OnInit {
 
-  products: Product[] = [
-		{
-			id : 1000,
-			code : "f230fh0g3",
-			name: "burro Watch",
-			description: "Product Description",
-			image: "macaco.svg",
-			price: 75,
-			category: "Accessories",
-			quantity: 24,
-			inventoryStatus: "INSTOCK",
-			rating: 5
-		},
-    {
-			id : 1000,
-			code : "f230fh0g3",
-			name: "Bamboo Watch",
-			description: "Product Description",
-			image: "bamboo-watch.jpg",
-			price: 165,
-			category: "Accessories",
-			quantity: 24,
-			inventoryStatus: "INSTOCK",
-			rating: 5
-		},{
-			id : 1000,
-			code : "f230fh0g3",
-			name: "Bamboo Watch",
-			description: "Product Description",
-			image: "bamboo-watch.jpg",
-			price: 65,
-			category: "Accessories",
-			quantity: 24,
-			inventoryStatus: "INSTOCK",
-			rating: 5
-		},{
-			id : 1000,
-			code : "f230fh0g3",
-			name: "Bamboo Watch",
-			description: "Product Description",
-			image: "bamboo-watch.jpg",
-			price: 65,
-			category: "Accessories",
-			quantity: 24,
-			inventoryStatus: "INSTOCK",
-			rating: 5
-		},{
-			id : 1000,
-			code : "f230fh0g3",
-			name: "Bamboo Watch",
-			description: "Product Description",
-			image: "bamboo-watch.jpg",
-			price: 65,
-			category: "Accessories",
-			quantity: 24,
-			inventoryStatus: "INSTOCK",
-			rating: 5
-		},
-  ];
-
   sortOptions: SelectItem[] = [];
 
   sortOrder: number = 0;
 
   sortField: string = '';
 
-  sourceCities: any[] = [];
+  products : Product [] = [];
+  _ps = inject(ProductService);
 
-  targetCities: any[] = [];
-
-  orderCities: any[] = [];
-
-
-
-  constructor() { }
 
   ngOnInit(): void {
     this.sortOptions = [
-        { label: 'Precio Alto a Bajo', value: '!price' },
-        { label: 'Pricio Bajo a Alto', value: 'price' }
+        { label: 'Precio Alto a Bajo', value: '!precio_venta' },
+        { label: 'Pricio Bajo a Alto', value: 'precio_venta' }
     ];
+
+	this.getProd();
+  }
+
+  getProd(){
+	this._ps.getProduct().subscribe({
+		next : (resp) => { console.log(resp); this.products = resp; },
+		error : (err) => {  console.log(err) }
+	});
+
   }
 
   onSortChange(event: any) {
