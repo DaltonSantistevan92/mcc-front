@@ -1,1 +1,93 @@
-<p>cart works!</p>
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="flex justify-content-between align-items-center sm:flex-row">
+                <h5>Mi Carrito</h5>
+                <p-button routerLink="/home" styleClass="p-button-text" class="mb-4"
+                    label="Seguir comprando"></p-button>
+            </div>
+
+            <p-table #dt1 [value]="customers1" dataKey="id" [loading]="loading" [rowHover]="true"
+                styleClass="p-datatable-gridlines"
+                [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-content-between flex-column sm:flex-row">
+                        <span class="p-input-icon-left mb-2">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)"
+                                placeholder="Search Keyword" class="w-full" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="min-width: 2rem; width: 3rem">
+                            <div class="flex justify-content-center align-items-center">
+                                Cantidad
+                            </div>
+                        </th>
+
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-center align-items-center">
+                                Detalle
+                            </div>
+                        </th>
+						
+                        <th style="min-width: 8rem">
+                            <div class="flex justify-content-center align-items-center">
+                                Precio
+                            </div>
+                        </th>
+                      
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                    <tr>
+                        <td class="text-center">
+                            <p-inputNumber [(ngModel)]="value" [showButtons]="true" inputId="stacked" [min]="1"></p-inputNumber>
+                        </td>
+
+                        <td>
+                            <img [alt]="customer.representative.name"
+                                src="assets/img/macaco.svg" width="55" height="40"
+                                style="vertical-align: middle" />
+                            <span class="image-text ml-2">{{customer.representative.name}}</span>
+                        </td>
+						
+                        <td class="text-right">
+                            {{customer.balance | currency:'USD':'symbol'}}
+                        </td>
+
+                        <td class="text-center">
+                            <p-button styleClass="p-button-rounded p-button-danger p-button-text" type="button"
+                                icon="pi pi-trash" class="p-element"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr>
+                        <td colspan="2" class="text-right">Total</td>
+                        <td class="text-right">10000 </td>
+                        <td class="text-center">
+                            <button type="button" pButton pRipple icon="pi pi-paypal" label="Pagar" class="p-button-text p-button-warning"></button>
+						</td>
+                    </tr>
+                </ng-template>
+                <!-- <ng-template pTemplate="footer">
+                     -->
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No customers found.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="loadingbody">
+                    <tr>
+                        <td colspan="8">Loading customers data. Please wait.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div>

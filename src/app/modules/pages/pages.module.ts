@@ -8,6 +8,7 @@ import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { BadgeModule } from 'primeng/badge';
 
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
@@ -19,6 +20,17 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
 import { PagesComponent } from './pages.component';
+
+//card
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { RippleModule } from 'primeng/ripple';
+import { MultiSelectModule } from 'primeng/multiselect';
+
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
+import { SliderModule } from 'primeng/slider';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -44,10 +56,23 @@ import { PagesComponent } from './pages.component';
     MenubarModule,
     PagesRoutingModule,
     DataViewModule,
+    BadgeModule,
     InputTextModule,
     DropdownModule,
     RatingModule,
-    ButtonModule
+    ButtonModule,
+    //card
+    TableModule,
+    ToggleButtonModule,
+    RippleModule,
+    MultiSelectModule,
+    ProgressBarModule,
+    ToastModule,
+    SliderModule,
+    InputNumberModule
+    
+    
+
   ],
 })
 export class PagesModule { }

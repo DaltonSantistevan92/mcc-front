@@ -1,6 +1,12 @@
-<!-- <p>pages works!</p> -->
-<app-header></app-header>
+<div class="layout-wrapper">
 
-<router-outlet></router-outlet>
+    <app-header></app-header>
+    
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer-page></app-footer-page>
+    </div>
 
-<app-footer-page></app-footer-page>
+</div>
