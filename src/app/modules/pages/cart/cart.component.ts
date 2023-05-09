@@ -3,6 +3,7 @@ import { Customer, Representative } from '../interfaces/customer';
 import { Product } from '../interfaces/product';
 import { Table } from 'primeng/table';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { CartService } from '../services/cart.service';
 
 interface expandedRows {
   [key: string]: boolean;
@@ -83,16 +84,22 @@ export class CartComponent implements OnInit {
 
   @ViewChild('filter') filter!: ElementRef;
 
+  productos: Product [] = [];
+ 
+  totalGeneralPrice:number = 0;
+  subTotalPrice : number = 0;
 
-  constructor() { }
+  cartSer = inject(CartService);
+
 
   ngOnInit() {
     setTimeout(() => {
       this.loading = false;
-      // @ts-ignore
-      this.customers1.forEach(customer => customer.date = new Date(customer.date));
-    }, 500);  
+      this.productos.forEach(customer => customer.created_at = new Date(customer.created_at!));
+    }, 500);
     
+    this.getCarritoDetalle();
+    this.totalGeneral();
   }
 
   onSort() {
@@ -136,5 +143,28 @@ export class CartComponent implements OnInit {
     table.clear();
     this.filter.nativeElement.value = '';
   }
+
+  getCarritoDetalle(){
+    this.cartSer.currentDataCart$.subscribe( listProd => { this.productos = listProd; });
+  }
+  
+  totalGeneral(){
+    this.cartSer.totalGeneralPrice$.subscribe( totalGeneral => {  this.totalGeneralPrice = totalGeneral; console.log('total general',this.totalGeneralPrice); });
+  }
+
+  removeProduct(producto:Product){
+    this.cartSer.removeElementCart(producto);
+  }
+
+  actualizarCantidad(cantidad: number,producto: Product) {      
+    if (cantidad > producto.quantity!) {
+      this.cartSer.aumentarCantidad(producto);
+    } else if (cantidad < producto.quantity!) {
+      this.cartSer.disminuirCantidad(producto);
+    }
+  }
+
+
+
 
 }

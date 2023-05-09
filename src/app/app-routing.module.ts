@@ -6,7 +6,7 @@ import { PagesComponent } from './modules/pages/pages.component';
 
 const routes: Routes = [
   {
-    path : '',
+    path : '',//home
     component : PagesComponent,
     children : [
       {
@@ -16,7 +16,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '', 
+    path: '', //auth admin
     component: LayoutComponent,
     children: [
       { 
@@ -26,7 +26,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'auth',
+    path: 'auth',//auth cliente
     loadChildren: () => import('src/app/modules/auth/auth.module').then(m => m.AuthModule)
   },
  

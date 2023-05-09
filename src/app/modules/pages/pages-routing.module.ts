@@ -8,11 +8,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
-  { 
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',      component: HomeComponent    },
   { path: 'cart',      component: CartComponent    },
   { path: 'about',     component: AboutComponent   },

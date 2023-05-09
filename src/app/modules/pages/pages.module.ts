@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MenubarModule } from 'primeng/menubar';
@@ -31,7 +31,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { InputNumberModule } from 'primeng/inputnumber';
-
+import { IsLoginDirective } from 'src/app/directives/is-login.directive';
+import { LinkLoginComponent } from './components/link-login/link-login.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +45,14 @@ import { InputNumberModule } from 'primeng/inputnumber';
     CheckoutComponent,
     HeaderComponent,
     FooterPageComponent,
-    PagesComponent
+    PagesComponent,
+    IsLoginDirective,
+    LinkLoginComponent
   ],
   exports : [
     HeaderComponent,
     FooterPageComponent,
+    LinkLoginComponent
   ],
   imports: [
     CommonModule,
@@ -69,10 +73,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ProgressBarModule,
     ToastModule,
     SliderModule,
-    InputNumberModule
-    
-    
-
+    InputNumberModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PagesModule { }

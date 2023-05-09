@@ -1,1 +1,9 @@
-<p>favorites works!</p>
+
+
+<ng-container *isLogin="false">
+    <app-link-login [dataUrl]="dataUrl"></app-link-login>
+</ng-container>
+
+<ng-container *isLogin="true">
+    <p>favorites works!</p>
+</ng-container>

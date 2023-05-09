@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from 'src/app/layout/layout.service';
+import { Product } from '../../interfaces/product';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,14 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('topbarmenu') menu!: ElementRef;
 
-  constructor(public layoutService: LayoutService) {}
+
+  productos: Product [] = [];
+ 
+  totalQuantity:number = 0;
+  
+  layoutService = inject(LayoutService);
+  cartSer = inject(CartService);
+
 
   ngOnInit() {
     this.tieredItems = [
@@ -57,5 +66,13 @@ export class HeaderComponent implements OnInit {
         icon: 'pi pi-fw pi-sign-out',
       }, */
     ];
+
+    this.cantidad();
   }
+
+
+  cantidad(){
+    this.cartSer.currentDataCart$.subscribe( x => this.totalQuantity = x.length);
+  }
+
 }

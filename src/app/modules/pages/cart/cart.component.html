@@ -1,4 +1,4 @@
-<div class="grid">
+<!-- <div class="grid">
     <div class="col-12">
         <div class="card">
 
@@ -74,8 +74,102 @@
 						</td>
                     </tr>
                 </ng-template>
-                <!-- <ng-template pTemplate="footer">
-                     -->
+               
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No customers found.</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="loadingbody">
+                    <tr>
+                        <td colspan="8">Loading customers data. Please wait.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div> -->
+
+
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="flex justify-content-between align-items-center sm:flex-row">
+                <h5>Mi Carrito</h5>
+                <p-button routerLink="/home" styleClass="p-button-text" class="mb-4"
+                    label="Seguir comprando"></p-button>
+            </div>
+
+            <p-table #dt1 [value]="productos" dataKey="id" [loading]="loading" [rowHover]="true"
+                styleClass="p-datatable-gridlines"
+                [globalFilterFields]="['nombre','descripcion','precio_venta','estado']" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex justify-content-between flex-column sm:flex-row">
+                        <span class="p-input-icon-left mb-2">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Buscar.." class="w-full" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-center align-items-center"> Detalle </div>
+                        </th>
+
+                        <th style="min-width: 2rem; width: 3rem">
+                            <div class="flex justify-content-center align-items-center"> Cantidad </div>
+                        </th>
+						
+                        <th style="min-width: 8rem">
+                            <div class="flex justify-content-center align-items-center"> Precio </div>
+                        </th>
+                        <th style="min-width: 8rem">
+                            <div class="flex justify-content-center align-items-center"> Sub Total </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-producto let-index="index">
+                    <tr>
+                        <td>
+                            <img [alt]="producto.imagen" [src]="producto.imagen" width="55" height="40" style="vertical-align: middle" />
+                            <span class="image-text ml-2">{{producto.descripcion}}</span>
+                        </td>
+
+                        <td class="text-center">
+                            <!-- (onChange)="actualizarCantidad(producto, $event)" 
+                                (onIncrement)="aumentarCantidad(producto)" (onDecrement)="disminuirCantidad(producto)"
+                            -->
+                            <p-inputNumber (ngModelChange)="actualizarCantidad($event,producto)"   [(ngModel)]="producto.quantity" [showButtons]="true" [inputId]="'stacked-' + producto.id" [min]="1"></p-inputNumber>
+                        </td>
+						
+                        <td class="text-right">
+                            {{producto.precio_venta | currency:'USD':'symbol'}}
+                        </td>
+
+                        <td class="text-right">
+                            {{producto.precio_venta * producto.quantity | currency:'USD':'symbol'}}
+                        </td>
+
+                        <td class="text-center">
+                            <p-button styleClass="p-button-rounded p-button-danger p-button-text" type="button"
+                                icon="pi pi-trash" class="p-element" (click)="removeProduct(producto)">
+                            </p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr>
+                        <td colspan="3" class="text-right">Total</td>
+                        <td class="text-right">{{ totalGeneralPrice  | currency:'USD':'symbol'}}</td>
+                        <td class="text-center">
+                            <button type="button" pButton pRipple icon="pi pi-paypal" label="Pagar" class="p-button-text p-button-warning"></button>
+						</td>
+                    </tr>
+                </ng-template>
+               
                 <ng-template pTemplate="emptymessage">
                     <tr>
                         <td colspan="8">No customers found.</td>

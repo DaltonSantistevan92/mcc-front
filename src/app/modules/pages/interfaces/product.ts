@@ -33,7 +33,8 @@ export interface Product {
   precio_venta?: number;
   margen_ganancia?: number;
   estado?: string;
-  created_at?: string;
-  updated_at?: string;
+  created_at?: Date;
+  updated_at?: Date;
   category : Category;
+  quantity?:number;
 }

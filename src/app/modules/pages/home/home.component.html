@@ -54,7 +54,7 @@
 							<div class="flex align-items-center justify-content-between">
 								<span class="text-2xl font-semibold">${{product.precio_venta}}</span>
 								<!-- <p-button icon="pi pi-shopping-cart" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button> -->
-								<p-button icon="pi pi-shopping-cart" styleClass="p-button-warning"></p-button>
+								<p-button icon="pi pi-shopping-cart" (click)="addCart(product)" styleClass="p-button-warning"></p-button>
 							</div>
 						</div>
 					</div>

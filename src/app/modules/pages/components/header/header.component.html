@@ -10,8 +10,18 @@
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
-    <div #topbarmenu class="layout-topbar-menu"
-        [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+    <div #topbarmenu class=" layout-topbar-menu"
+        [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}"
+        >
+
+        <div class="flex flex-wrap gap-2 mt-3">
+            <i routerLink="/cart" severity="warning" value="2" class="p-link p-element pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style="font-size: 1.5rem;">
+                <span *ngIf="totalQuantity" id="pr_id_34_badge" class="p-badge p-component p-badge-warning">{{totalQuantity}}</span>
+            </i>
+            <!-- <i pbadge="" severity="danger" class="p-element pi pi-calendar mr-4 p-text-secondary p-overlay-badge" style="font-size: 2rem;">
+                <span id="pr_id_35_badge" class="p-badge p-component p-badge-danger">10+</span>
+            </i>   -->
+        </div>
 
         <button class="p-link layout-topbar-button" routerLink="/orders">
             <i class="pi pi-box"></i>

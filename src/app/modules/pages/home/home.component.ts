@@ -3,6 +3,7 @@ import { SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { Product } from '../interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -17,41 +18,46 @@ export class HomeComponent implements OnInit {
 
   sortField: string = '';
 
-  products : Product [] = [];
+  products: Product[] = [];
   _ps = inject(ProductService);
+  _cartser = inject(CartService);
 
 
   ngOnInit(): void {
     this.sortOptions = [
-        { label: 'Precio Alto a Bajo', value: '!precio_venta' },
-        { label: 'Pricio Bajo a Alto', value: 'precio_venta' }
+      { label: 'Precio Alto a Bajo', value: '!precio_venta' },
+      { label: 'Pricio Bajo a Alto', value: 'precio_venta' }
     ];
 
-	this.getProd();
+    this.getProd();
   }
 
-  getProd(){
-	this._ps.getProduct().subscribe({
-		next : (resp) => { console.log(resp); this.products = resp; },
-		error : (err) => {  console.log(err) }
-	});
-
+  getProd() {
+    this._ps.getProduct().subscribe({
+      next: (resp) => { this.products = resp; },
+      error: (err) => { console.log(err) }
+    });
   }
 
   onSortChange(event: any) {
     const value = event.value;
 
     if (value.indexOf('!') === 0) {
-        this.sortOrder = -1;
-        this.sortField = value.substring(1, value.length);
+      this.sortOrder = -1;
+      this.sortField = value.substring(1, value.length);
     } else {
-        this.sortOrder = 1;
-        this.sortField = value;
+      this.sortOrder = 1;
+      this.sortField = value;
     }
-}
+  }
 
-onFilter(dv: DataView, event: Event) {
+  onFilter(dv: DataView, event: Event) {
     dv.filter((event.target as HTMLInputElement).value);
-}
+  }
+
+  addCart(product:Product){
+    const productoModificado : Product = { ...product, quantity: 1 };
+    this._cartser.changeCart(productoModificado);
+  }
 
 }
