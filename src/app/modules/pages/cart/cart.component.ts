@@ -164,6 +164,28 @@ export class CartComponent implements OnInit {
     }
   }
 
+  onKeyDown(event: KeyboardEvent) {
+    const allowedKeys = ['Enter', 'Delete', 'Backspace'];
+    const inputElement = event.target as HTMLInputElement;
+
+    if (!allowedKeys.includes(event.key)) {
+      event.preventDefault();
+    }
+
+    // Restringir la entrada manual de texto
+    inputElement.blur();
+  }
+
+
+
+ /*  aumentarCantidad(producto: Product){
+    this.cartSer.aumentarCantidad(producto);
+  }
+
+  disminuirCantidad(producto: Product){
+    this.cartSer.disminuirCantidad(producto);
+  } */
+
 
 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, fromEvent, map, startWith } from 'rxjs';
 
 export interface AppConfig {
   inputStyle: string;
@@ -23,6 +23,7 @@ interface LayoutState {
   providedIn: 'root'
 })
 export class LayoutService {
+  private isMobile$: Observable<boolean>;
 
   config: AppConfig = {
     ripple: false,
@@ -50,6 +51,13 @@ export class LayoutService {
 
   overlayOpen$ = this.overlayOpen.asObservable();
 
+  constructor() {
+    this.isMobile$ = fromEvent(window, 'resize').pipe(
+      map(() => window.innerWidth > 991),
+      startWith(window.innerWidth > 991)
+    );
+  }
+  
   onMenuToggle() {
     if (this.isOverlay()) {
       this.state.overlayMenuActive = !this.state.overlayMenuActive;
@@ -70,7 +78,7 @@ export class LayoutService {
     }
   }
 
-  showProfileSidebar() {
+  showProfileSidebar() {//click en los puntitos
     this.state.profileSidebarVisible = !this.state.profileSidebarVisible;
     if (this.state.profileSidebarVisible) {
       this.overlayOpen.next(null);
@@ -97,4 +105,7 @@ export class LayoutService {
     this.configUpdate.next(this.config);
   }
 
+  getIsMobile(): Observable<boolean> {
+    return this.isMobile$;
+  }
 }

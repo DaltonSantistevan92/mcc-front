@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { PagesModule } from './modules/pages/pages.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,

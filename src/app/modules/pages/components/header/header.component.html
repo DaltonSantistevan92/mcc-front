@@ -10,18 +10,14 @@
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
+
+    <!-- prueba -->
+    
+
+
     <div #topbarmenu class=" layout-topbar-menu"
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}"
         >
-
-        <div class="flex flex-wrap gap-2 mt-3">
-            <i routerLink="/cart" severity="warning" value="2" class="p-link p-element pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style="font-size: 1.5rem;">
-                <span *ngIf="totalQuantity" id="pr_id_34_badge" class="p-badge p-component p-badge-warning">{{totalQuantity}}</span>
-            </i>
-            <!-- <i pbadge="" severity="danger" class="p-element pi pi-calendar mr-4 p-text-secondary p-overlay-badge" style="font-size: 2rem;">
-                <span id="pr_id_35_badge" class="p-badge p-component p-badge-danger">10+</span>
-            </i>   -->
-        </div>
 
         <button class="p-link layout-topbar-button" routerLink="/orders">
             <i class="pi pi-box"></i>
@@ -37,14 +33,21 @@
             <i class="pi pi-user"></i>
             <span>Mi Perfil</span>
         </button>
-        
-        <button class="p-link layout-topbar-button" routerLink="/cart">
+
+    
+        <div class="p-link flex flex-wrap gap-2 ml-3 mt-3" *ngIf="(layoutService.getIsMobile() | async)">
+            <i routerLink="/cart" severity="warning" value="2" class="p-element pi pi-shopping-cart mr-4 p-text-secondary p-overlay-badge" style="font-size: 1.5rem;">
+                <span *ngIf="totalQuantity" id="pr_id_34_badge" class="p-badge p-component p-badge-warning">{{totalQuantity}}</span>
+            </i>     
+        </div>
+
+        <button class="p-link layout-topbar-button" routerLink="/cart" *ngIf="!(layoutService.getIsMobile() | async)">
             <i class="pi pi-shopping-cart"></i>
-            <p-badge value="12" severity="warning"></p-badge>
             <span>Mi Carrito</span>
+            <p-badge class="ml-2" value="{{totalQuantity}}" severity="warning"></p-badge>
         </button>
 
-        <button class="p-link layout-topbar-button" *ngIf="false">
+        <button class="p-link layout-topbar-button" *isLogin="true" style="margin-left: -3px;">
             <i class="pi pi-sign-out"></i>
             <span>Salir</span>
         </button>

@@ -33,6 +33,7 @@ import { SliderModule } from 'primeng/slider';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { IsLoginDirective } from 'src/app/directives/is-login.directive';
 import { LinkLoginComponent } from './components/link-login/link-login.component';
+import { DisabledInputDirective } from 'src/app/directives/disabled-input.directive';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import { LinkLoginComponent } from './components/link-login/link-login.component
     HeaderComponent,
     FooterPageComponent,
     PagesComponent,
+    LinkLoginComponent,
     IsLoginDirective,
-    LinkLoginComponent
+    DisabledInputDirective
   ],
   exports : [
     HeaderComponent,
