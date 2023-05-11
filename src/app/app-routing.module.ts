@@ -20,7 +20,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { 
-        path: '', canActivate: [AuthGuard],
+        path: '', canActivate: [AuthGuard],//guardar  con el rol id // prefix macaco/dashboard
         loadChildren: () => import('src/app/modules/dashboard/dashboard.module').then(m => m.DashboardModule),  
       },
     ]

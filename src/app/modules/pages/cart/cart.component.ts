@@ -149,20 +149,31 @@ export class CartComponent implements OnInit {
   }
   
   totalGeneral(){
-    this.cartSer.totalGeneralPrice$.subscribe( totalGeneral => {  this.totalGeneralPrice = totalGeneral; console.log('total general',this.totalGeneralPrice); });
+    this.cartSer.totalGeneralPrice$.subscribe( totalGeneral => {  this.totalGeneralPrice = totalGeneral; });
   }
 
   removeProduct(producto:Product){
     this.cartSer.removeElementCart(producto);
   }
 
-  actualizarCantidad(cantidad: number,producto: Product) {      
+  /* actualizarCantidad(cantidad: number,producto: Product) {      
     if (cantidad > producto.quantity!) {
       this.cartSer.aumentarCantidad(producto);
     } else if (cantidad < producto.quantity!) {
       this.cartSer.disminuirCantidad(producto);
     }
+  } */
+
+  aumentar(producto: Product){
+    this.cartSer.aumentarCantidad(producto);
   }
+
+  disminuir(producto: Product){
+    this.cartSer.aumentarCantidad(producto);
+  }
+
+
+
 
   onKeyDown(event: KeyboardEvent) {
     const allowedKeys = ['Enter', 'Delete', 'Backspace'];

@@ -10,11 +10,6 @@
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
-
-    <!-- prueba -->
-    
-
-
     <div #topbarmenu class=" layout-topbar-menu"
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}"
         >
@@ -47,9 +42,21 @@
             <p-badge class="ml-2" value="{{totalQuantity}}" severity="warning"></p-badge>
         </button>
 
-        <button class="p-link layout-topbar-button" *isLogin="true" style="margin-left: -3px;">
+        <button class="p-link layout-topbar-button" *isLogin="isLogin" style="margin-left: -3px;" (click)="showDialog = true">
             <i class="pi pi-sign-out"></i>
             <span>Salir</span>
         </button>
     </div>
 </div>
+
+
+<p-dialog [(visible)]="showDialog" header="Cerrar Sesión" [modal]="true" [style]="{width:'450px'}">
+    <div class="flex align-items-center justify-content-center">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem; color: #F59E0B;"></i>
+        <span>Esta seguro de cerrar la sesión?</span>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="showDialog = false"></button>
+        <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Sí" (click)="confirmExit()"></button>
+    </ng-template>
+</p-dialog>

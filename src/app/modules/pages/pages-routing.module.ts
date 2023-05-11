@@ -7,7 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrdersComponent } from './orders/orders.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
-const routes: Routes = [
+const routes: Routes = [//cliente
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',      component: HomeComponent    },
   { path: 'cart',      component: CartComponent    },

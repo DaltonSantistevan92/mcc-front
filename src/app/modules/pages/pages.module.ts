@@ -35,6 +35,10 @@ import { IsLoginDirective } from 'src/app/directives/is-login.directive';
 import { LinkLoginComponent } from './components/link-login/link-login.component';
 import { DisabledInputDirective } from 'src/app/directives/disabled-input.directive';
 
+import { FieldsetModule } from 'primeng/fieldset';
+import { DialogModule } from 'primeng/dialog';
+
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -76,6 +80,8 @@ import { DisabledInputDirective } from 'src/app/directives/disabled-input.direct
     ToastModule,
     SliderModule,
     InputNumberModule,
+    FieldsetModule,
+    DialogModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

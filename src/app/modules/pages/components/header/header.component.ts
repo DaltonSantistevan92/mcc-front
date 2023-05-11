@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, inject, ChangeDetectorRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from 'src/app/layout/layout.service';
 import { Product } from '../../interfaces/product';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -20,10 +22,14 @@ export class HeaderComponent implements OnInit {
   productos: Product [] = [];
  
   totalQuantity:number = 0;
+
+  isLogin : boolean = true;
   
   layoutService = inject(LayoutService);
   cartSer = inject(CartService);
-
+  authSer = inject(AuthService);
+  showDialog: boolean = false;
+  changeDetector = inject(ChangeDetectorRef);
 
   ngOnInit() {
     this.tieredItems = [
@@ -73,6 +79,13 @@ export class HeaderComponent implements OnInit {
 
   cantidad(){
     this.cartSer.currentDataCart$.subscribe( x => this.totalQuantity = x.length);
+  }
+
+  confirmExit(){
+    this.showDialog = false;
+    this.isLogin = false;
+    this.changeDetector.detectChanges();
+    this.authSer.logout();
   }
 
 }

@@ -3,5 +3,57 @@
 </ng-container>
 
 <ng-container *isLogin="true">
-    <p>profile works!</p>
+    <!--  <p>profile works!</p> -->
+<!-- styleClass="p-button-rounded p-button-warning p-button-text p-button-raised" -->
+    <div class="col-12 md:col-12">
+        <p-fieldset [toggleable]="true">
+            <ng-template pTemplate="header">
+                <div class="flex align-items-center" >
+                    <span class="pi pi-user mr-2"></span>
+                    <span class="font-bold text-lg">Datos Personales</span>
+                </div>
+            </ng-template>
+            
+            <div class="flex justify-content-evenly flex-wrap card-container orange-container">
+                <div class="card">
+                    <div class="formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label for="firstname6">Cédula</label>
+                            <input id="firstname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label for="lastname6">Nombres</label>
+                            <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label for="lastname6">Apellidos</label>
+                            <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        
+                        <div class="field col-12 md:col-4">
+                            <label for="city">Email</label>
+                            <input id="city" type="email" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label for="zip">Fecha de Nacimiento</label>
+                            <input id="zip" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label for="state">Sexo</label>
+                            <select id="state" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                            </select>
+                        </div>
+
+                        <div class="field col-12">
+                            <label for="address">Direccion</label>
+                            <textarea id="address" type="text" rows="2" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
 </ng-container>
